@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+main {
+  padding: 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.lede {
+  opacity: 0.8;
+}
+
+/* --- The Fade --- */
+.fade-text-container {
+  max-height: 180px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+  margin: 2rem 0;
+}
+
+.explainer pre {
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.explainer code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}

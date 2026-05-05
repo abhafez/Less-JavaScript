@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Text Fade</title>
+    <meta
+      name="description"
+      content="Fade long text previews with CSS masks. Works on any background, light or dark."
+    />
+    <link rel="stylesheet" href="./text-fade.css" />
+    <link rel="stylesheet" href="/src/theme.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M10 12L6 8l4-4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        All examples
+      </a>
+    </nav>
+    <main>
+      <h1>Smooth Text Fade</h1>
+      <p class="lede">
+        The old trick was to layer a white gradient over the bottom of the text.
+        That breaks in dark mode and on textured backgrounds. CSS masks fade the
+        text itself, so it works anywhere.
+      </p>
+
+      <article class="fade-text-container">
+        <p>
+          The quietest revolutions in software rarely arrive with a press release.
+          They show up as a single CSS property, a one-line patch, a tiny
+          primitive that quietly replaces a tower of JavaScript glue. You wake
+          up one morning, open the docs, and realize the workaround you've been
+          shipping for years is now a one-liner native to the platform.
+        </p>
+        <p>
+          Masks are one of those primitives. Instead of painting a colored
+          rectangle over your content to hide it, you tell the browser which
+          pixels of the element itself should be visible. A gradient becomes a
+          dimmer switch for opacity. Suddenly the same fade works on a white
+          page, a dark page, a photograph, a grid of stripes, a video.
+        </p>
+        <p>
+          You stop thinking in terms of "what color is the background" and
+          start thinking in terms of "what shape do I want this content to
+          have." It's a small shift in framing that opens up an enormous space
+          of effects you used to need canvas, SVG, or JavaScript for.
+        </p>
+      </article>
+
+      <section class="explainer">
+        <h2>How it works</h2>
+        <pre><code>.fade-text-container {
+  max-height: 120px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    #000 40%,
+    transparent 100%
+  );
+}</code></pre>
+        <ul>
+          <li><code>max-height</code> + <code>overflow: hidden</code> clip the paragraph to a preview.</li>
+          <li><code>mask-image</code> works like a Photoshop layer mask: black keeps pixels, transparent erases them.</li>
+          <li>The gradient stays solid for the top 40%, then fades to nothing — so the text dissolves instead of being covered.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

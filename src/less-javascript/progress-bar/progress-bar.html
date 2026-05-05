@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Progress Indicator</title>
+    <meta
+      name="description"
+      content="Create progress bar in css that updates on scroll. CSS only, no JS"
+    />
+    <link rel="stylesheet" href="./progress-bar.css" />
+    <link rel="stylesheet" href="/src/theme.css" />
+  </head>
+  <body>
+    <!-- The Progress Bar Container -->
+    <div class="progress"></div>
+    <nav>
+      <a href="/" class="back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M10 12L6 8l4-4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        All examples
+      </a>
+    </nav>
+    <main>
+      <h1>Scroll Down to See the Magic</h1>
+      <p>The green bar at the top will grow as you scroll.</p>
+
+      <!-- Dummy content to create scroll depth -->
+      <div class="content-spacer">
+        <p>Keep scrolling...</p>
+      </div>
+
+      <section>
+        <h2>Middle of the Page</h2>
+        <p>Modern CSS allows us to do this without a single line of JavaScript!</p>
+      </section>
+
+      <div class="content-spacer"></div>
+
+      <footer>
+        <h2>The End</h2>
+        <p>The bar should now be at 100% width.</p>
+      </footer>
+    </main>
+  </body>
+</html>

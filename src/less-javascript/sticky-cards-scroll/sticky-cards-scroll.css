@@ -1,4 +1,36 @@
 :root {
+  --bg: #f5f3ff;
+  --card-1: #ede9fe;
+  --card-2: #ddd6fe;
+  --card-3: #c4b5fd;
+  --card-4: #a78bfa;
+  --card-5: #7c3aed;
+  --text: #1e1b4b;
+  --text-muted: #4c1d95;
+  --accent: #7c3aed;
+  --border: #ddd6fe;
+  font:
+    18px/1.5 system-ui,
+    sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0f0f13;
+    --card-1: #1e1b4b;
+    --card-2: #312e81;
+    --card-3: #4338ca;
+    --card-4: #6366f1;
+    --card-5: #818cf8;
+    --text: #e0e7ff;
+    --text-muted: #a5b4fc;
+    --accent: #c084fc;
+    --border: #2e303a;
+  }
+}
+
+:root[data-theme='dark'] {
   --bg: #0f0f13;
   --card-1: #1e1b4b;
   --card-2: #312e81;
@@ -8,10 +40,7 @@
   --text: #e0e7ff;
   --text-muted: #a5b4fc;
   --accent: #c084fc;
-  font:
-    18px/1.5 system-ui,
-    sans-serif;
-  color-scheme: dark;
+  --border: #2e303a;
 }
 
 * {
@@ -23,14 +52,6 @@
 body {
   background: var(--bg);
   color: var(--text);
-}
-
-/* Back link */
-.nav {
-  position: fixed;
-  top: 20px;
-  left: 24px;
-  z-index: 100;
 }
 
 .nav a {
@@ -66,8 +87,8 @@ body {
   letter-spacing: -0.03em;
   background: linear-gradient(135deg, var(--text) 40%, var(--accent));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
 }
 
 .intro p {

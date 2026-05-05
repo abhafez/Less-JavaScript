@@ -5,7 +5,9 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Back to Top — CSS Tricks</title>
+    <meta name="description" content="Sticky scroll-to-top anchor. CSS only, no JS" />
     <link rel="stylesheet" href="./back-to-top.css" />
+    <link rel="stylesheet" href="/src/theme.css" />
   </head>
   <body id="top">
     <div id="wrap">
@@ -51,22 +53,18 @@
             <code>place-self: end</code> to lock it in the bottom-right corner.
             <code>margin-top: 100vh</code> keeps it hidden until the user scrolls down.
           </p>
-          <pre>
-              <code>
-                  body {
-                      display: grid;
-                      grid-template-columns: auto 0px;
-                  }
+          <pre><code>body {
+  display: grid;
+  grid-template-columns: auto 0px;
+}
 
-                  .top {
-                      place-self: end;
-                      position: sticky;
-                      bottom: 20px;
-                      margin-top: 100vh;
-                      margin-right: 20px;
-                  }
-            </code>
-          </pre>
+.top {
+  place-self: end;
+  position: sticky;
+  bottom: 20px;
+  margin-top: 100vh;
+  margin-right: 20px;
+}</code></pre>
         </div>
       </div>
 
