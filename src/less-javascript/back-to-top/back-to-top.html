@@ -6,54 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Back to Top — CSS Tricks</title>
     <meta name="description" content="Sticky scroll-to-top anchor. CSS only, no JS" />
-    <link rel="stylesheet" href="./back-to-top.css" />
     <link rel="stylesheet" href="/src/theme.css" />
+    <link rel="stylesheet" href="./back-to-top.css" />
+    <script type="module" src="/src/theme.js"></script>
   </head>
   <body id="top">
-    <div id="wrap">
-      <a href="/" class="back">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path
-            d="M10 12L6 8l4-4"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-        All examples
-      </a>
+    <main>
+      <div id="wrap">
+        <back-link></back-link>
 
-      <h1>Back to Top Button</h1>
-      <p class="subtitle">One anchor link + a little CSS. No JavaScript needed.</p>
+        <h1>Back to Top Button</h1>
+        <p class="subtitle">One anchor link + a little CSS. No JavaScript needed.</p>
 
-      <h2>How it works</h2>
+        <h2>How it works</h2>
 
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>Clickable anchor</h3>
-          <p>
-            Add an <code>&lt;a&gt;</code> tag at the end of <code>&lt;body&gt;</code> pointing to
-            <code>#top</code> on the root element:
-          </p>
-          <pre><code>&lt;body id="top"&gt;
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Clickable anchor</h3>
+            <p>
+              Add an <code>&lt;a&gt;</code> tag at the end of <code>&lt;body&gt;</code> pointing to
+              <code>#top</code> on the root element:
+            </p>
+            <pre><code>&lt;body id="top"&gt;
   ...page content...
   &lt;a href="#top" class="top" aria-label="Back to top"&gt;↑&lt;/a&gt;
 &lt;/body&gt;</code></pre>
+          </div>
         </div>
-      </div>
 
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>Sticky positioning</h3>
-          <p>
-            Give <code>body</code> a two-column grid, then use <code>position: sticky</code> and
-            <code>place-self: end</code> to lock it in the bottom-right corner.
-            <code>margin-top: 100vh</code> keeps it hidden until the user scrolls down.
-          </p>
-          <pre><code>body {
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Sticky positioning</h3>
+            <p>
+              Give <code>main</code> a two-column grid, then use <code>position: sticky</code> and
+              <code>place-self: end</code> to lock it in the bottom-right corner.
+              <code>margin-top: 100vh</code> keeps it hidden until the user scrolls down.
+            </p>
+            <pre><code>main {
   display: grid;
   grid-template-columns: auto 0px;
 }
@@ -65,83 +56,84 @@
   margin-top: 100vh;
   margin-right: 20px;
 }</code></pre>
+          </div>
         </div>
-      </div>
 
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>Smooth scrolling</h3>
-          <p>One line makes all anchor links animate instead of jump:</p>
-          <pre><code>html, body {
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Smooth scrolling</h3>
+            <p>One line makes all anchor links animate instead of jump:</p>
+            <pre><code>html, body {
   scroll-behavior: smooth;
 }</code></pre>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <h2>Scroll down to see it in action ↓</h2>
+
+        <div class="filler">
+          <p>
+            CSS is a stylesheet language used to describe the presentation of a document written in
+            HTML. CSS describes how elements should be rendered on screen, on paper, in speech, or on
+            other media.
+          </p>
+          <p>
+            The cascade is an algorithm that defines how user agents combine property values
+            originating from different sources. It lies at the core of CSS, as emphasized by its name:
+            <em>Cascading</em> Style Sheets.
+          </p>
+          <p>
+            Custom properties (sometimes referred to as CSS variables) are entities defined by CSS
+            authors that represent specific values to be reused throughout a document. They are set
+            using custom property notation and are accessed using the <code>var()</code> function.
+          </p>
+          <p>
+            CSS Grid Layout is a two-dimensional layout system for the web. It lets you lay content
+            out in rows and columns. It has many features that make building complex layouts
+            straightforward.
+          </p>
+          <p>
+            Flexbox is a one-dimensional layout method for arranging items in rows or columns. Items
+            flex (expand) to fill additional space or shrink to fit into smaller spaces.
+          </p>
+          <p>
+            A CSS pseudo-class is a keyword added to a selector that specifies a special state of the
+            selected element(s). For example, <code>:hover</code> can be used to select a button when
+            a user's pointer hovers over it.
+          </p>
+          <p>
+            CSS transforms let you modify the coordinate space of the CSS visual formatting model.
+            Using CSS transforms, elements can be translated, rotated, scaled, and skewed.
+          </p>
+          <p>
+            CSS animations make it possible to animate transitions from one CSS style configuration to
+            another. Animations consist of two components: a style describing the animation and a set
+            of keyframes.
+          </p>
+          <p>
+            The CSS <code>position</code> property sets how an element is positioned in a document.
+            The <code>top</code>, <code>right</code>, <code>bottom</code>, and
+            <code>left</code> properties determine the final location of positioned elements.
+          </p>
+          <p>
+            CSS specificity is the algorithm used by browsers to determine the CSS declaration that is
+            most relevant to an element, which determines the property value to apply to the element.
+          </p>
         </div>
       </div>
 
-      <hr class="divider" />
-
-      <h2>Scroll down to see it in action ↓</h2>
-
-      <div class="filler">
-        <p>
-          CSS is a stylesheet language used to describe the presentation of a document written in
-          HTML. CSS describes how elements should be rendered on screen, on paper, in speech, or on
-          other media.
-        </p>
-        <p>
-          The cascade is an algorithm that defines how user agents combine property values
-          originating from different sources. It lies at the core of CSS, as emphasized by its name:
-          <em>Cascading</em> Style Sheets.
-        </p>
-        <p>
-          Custom properties (sometimes referred to as CSS variables) are entities defined by CSS
-          authors that represent specific values to be reused throughout a document. They are set
-          using custom property notation and are accessed using the <code>var()</code> function.
-        </p>
-        <p>
-          CSS Grid Layout is a two-dimensional layout system for the web. It lets you lay content
-          out in rows and columns. It has many features that make building complex layouts
-          straightforward.
-        </p>
-        <p>
-          Flexbox is a one-dimensional layout method for arranging items in rows or columns. Items
-          flex (expand) to fill additional space or shrink to fit into smaller spaces.
-        </p>
-        <p>
-          A CSS pseudo-class is a keyword added to a selector that specifies a special state of the
-          selected element(s). For example, <code>:hover</code> can be used to select a button when
-          a user's pointer hovers over it.
-        </p>
-        <p>
-          CSS transforms let you modify the coordinate space of the CSS visual formatting model.
-          Using CSS transforms, elements can be translated, rotated, scaled, and skewed.
-        </p>
-        <p>
-          CSS animations make it possible to animate transitions from one CSS style configuration to
-          another. Animations consist of two components: a style describing the animation and a set
-          of keyframes.
-        </p>
-        <p>
-          The CSS <code>position</code> property sets how an element is positioned in a document.
-          The <code>top</code>, <code>right</code>, <code>bottom</code>, and
-          <code>left</code> properties determine the final location of positioned elements.
-        </p>
-        <p>
-          CSS specificity is the algorithm used by browsers to determine the CSS declaration that is
-          most relevant to an element, which determines the property value to apply to the element.
-        </p>
-      </div>
-    </div>
-
-    <a href="#top" class="top" aria-label="Back to top">
-      <svg viewBox="0 0 20 20" fill="currentColor">
-        <path
-          fill-rule="evenodd"
-          d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </a>
+      <a href="#top" class="top" aria-label="Back to top">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path
+            fill-rule="evenodd"
+            d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </main>
   </body>
 </html>

@@ -1,25 +1,11 @@
-body {
-  margin: 0;
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
-  line-height: 1.6;
-  background-color: var(--bg);
-  color: var(--text);
-}
-
 main {
-  padding: 2rem;
   max-width: 720px;
-  margin: 0 auto;
 }
 
 .lede {
   opacity: 0.8;
 }
 
-/* --- The Fade --- */
 .fade-text-container {
   max-height: 180px;
   overflow: hidden;
@@ -29,13 +15,13 @@ main {
 }
 
 .explainer pre {
-  background: color-mix(in srgb, var(--text) 8%, transparent);
+  background: var(--code-bg);
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
 }
 
 .explainer code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--mono);
   font-size: 0.9em;
 }

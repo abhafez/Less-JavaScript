@@ -1,75 +1,8 @@
-:root {
-  --bg: #f5f3ff;
-  --card-1: #ede9fe;
-  --card-2: #ddd6fe;
-  --card-3: #c4b5fd;
-  --card-4: #a78bfa;
-  --card-5: #7c3aed;
-  --text: #1e1b4b;
-  --text-muted: #4c1d95;
-  --accent: #7c3aed;
-  --border: #ddd6fe;
-  font:
-    18px/1.5 system-ui,
-    sans-serif;
-  color-scheme: light dark;
+main {
+  padding: 2rem 0;
+  max-width: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --bg: #0f0f13;
-    --card-1: #1e1b4b;
-    --card-2: #312e81;
-    --card-3: #4338ca;
-    --card-4: #6366f1;
-    --card-5: #818cf8;
-    --text: #e0e7ff;
-    --text-muted: #a5b4fc;
-    --accent: #c084fc;
-    --border: #2e303a;
-  }
-}
-
-:root[data-theme='dark'] {
-  --bg: #0f0f13;
-  --card-1: #1e1b4b;
-  --card-2: #312e81;
-  --card-3: #4338ca;
-  --card-4: #6366f1;
-  --card-5: #818cf8;
-  --text: #e0e7ff;
-  --text-muted: #a5b4fc;
-  --accent: #c084fc;
-  --border: #2e303a;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-}
-
-.nav a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-
-.nav a:hover {
-  opacity: 1;
-}
-
-/* Intro section */
 .intro {
   min-height: 100svh;
   display: flex;
@@ -85,16 +18,18 @@ body {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, var(--text) 40%, var(--accent));
+  background: linear-gradient(135deg, var(--text-h) 40%, var(--accent));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin: 0;
 }
 
 .intro p {
   color: var(--text-muted);
   max-width: 480px;
   font-size: 1.1rem;
+  margin: 0;
 }
 
 .scroll-hint {
@@ -118,7 +53,6 @@ body {
   }
 }
 
-/* Cards list */
 #cards {
   list-style: none;
   display: grid;
@@ -143,10 +77,6 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   gap: 12px;
-  /*box-shadow:*/
-  /*  0 20px 60px rgba(0, 0, 0, 0.5),*/
-  /*  0 4px 12px rgba(0, 0, 0, 0.3);*/
-
   animation: scale linear forwards;
   animation-timeline: view();
   animation-range: 25vh 80vh;
@@ -187,6 +117,7 @@ body {
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
+  margin: 0;
 }
 
 .card__body {
@@ -194,9 +125,9 @@ body {
   opacity: 0.75;
   max-width: 480px;
   line-height: 1.6;
+  margin: 0;
 }
 
-/* Outro */
 .outro {
   min-height: 50svh;
   display: flex;
