@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>auto-fit vs auto-fill</title>
+    <meta
+      name="description"
+      content="The one-word swap that changes how your responsive CSS grid behaves"
+    />
+    <link rel="stylesheet" href="./auto-fit-vs-fill.css" />
+    <link rel="stylesheet" href="/src/theme.css" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <a href="/" class="back">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M10 12L6 8l4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          All examples
+        </a>
+      </nav>
+      <h1><code>auto-fit</code> vs <code>auto-fill</code></h1>
+      <p class="lede">
+        Same <code>repeat(?, minmax(200px, 1fr))</code>. Different word. Resize the window or change
+        the item count to see how they diverge.
+      </p>
+
+      <label class="count">
+        Items
+        <input id="count" type="range" min="1" max="12" value="3" />
+        <output for="count" id="countOut">3</output>
+      </label>
+
+      <section class="demo">
+        <header>
+          <h2>auto-fill</h2>
+          <p>Reserves columns for items that aren’t there. Leftover space stays empty.</p>
+          <code>repeat(auto-fill, minmax(200px, 1fr))</code>
+        </header>
+        <div class="grid fill" id="fill"></div>
+      </section>
+
+      <section class="demo">
+        <header>
+          <h2>auto-fit</h2>
+          <p>Collapses empty tracks. Existing items stretch to fill the row.</p>
+          <code>repeat(auto-fit, minmax(200px, 1fr))</code>
+        </header>
+        <div class="grid fit" id="fit"></div>
+      </section>
+    </main>
+
+    <script>
+      const fill = document.getElementById('fill');
+      const fit = document.getElementById('fit');
+      const range = document.getElementById('count');
+      const out = document.getElementById('countOut');
+
+      const render = (n) => {
+        const items = Array.from({ length: n }, (_, i) => `<div class="card">${i + 1}</div>`).join(
+          '',
+        );
+        fill.innerHTML = items;
+        fit.innerHTML = items;
+        out.value = n;
+      };
+
+      range.addEventListener('input', (e) => render(+e.target.value));
+      render(+range.value);
+    </script>
+  </body>
+</html>
