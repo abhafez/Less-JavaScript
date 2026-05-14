@@ -1,0 +1,127 @@
+@property --bg-hue {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 220;
+}
+
+@keyframes shift-bg {
+  0%   { --bg-hue: 220; }
+  100% { --bg-hue: 350; }
+}
+
+body {
+  background: hsl(var(--bg-hue) 45% 13%);
+  animation: shift-bg linear;
+  animation-timeline: scroll();
+  color: hsl(var(--bg-hue) 20% 85%);
+  transition: color 0.1s;
+}
+
+/* override theme.css bg so the scroll color is always visible */
+:root,
+:root[data-theme="light"],
+:root[data-theme="dark"] {
+  --bg: transparent;
+  --text-h: hsl(var(--bg-hue) 15% 95%);
+  --text: hsl(var(--bg-hue) 20% 75%);
+  --border: hsl(var(--bg-hue) 30% 25%);
+  --code-bg: hsl(var(--bg-hue) 35% 18%);
+  --accent: hsl(var(--bg-hue) 80% 75%);
+  --accent-bg: hsl(var(--bg-hue) 60% 30% / 0.25);
+  --accent-border: hsl(var(--bg-hue) 60% 55% / 0.4);
+}
+
+main {
+  max-width: 720px;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--text-h);
+  letter-spacing: -1px;
+  margin: 0 0 12px;
+}
+
+h1 code {
+  font-size: 0.85em;
+  padding: 2px 8px;
+}
+
+.lede {
+  margin: 0 0 16px;
+  max-width: 60ch;
+}
+
+.hint {
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 48px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* color stop swatches */
+.stops {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 64px;
+}
+
+.stop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.swatch {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: hsl(var(--stop-hue) 45% 13%);
+  border: 2px solid hsl(var(--stop-hue) 40% 35%);
+  flex-shrink: 0;
+}
+
+.stop-label {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* explainer */
+.explainer h2 {
+  font-size: 22px;
+  color: var(--text-h);
+  margin: 48px 0 12px;
+}
+
+.explainer p {
+  max-width: 60ch;
+  margin: 0 0 16px;
+}
+
+.explainer pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  overflow-x: auto;
+  margin: 0 0 16px;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.note {
+  font-size: 14px;
+  color: var(--text);
+  margin-top: 48px;
+  padding-bottom: 40px;
+}
+
+/* theme toggle contrast on dark bg */
+#theme-toggle {
+  color: hsl(var(--bg-hue) 20% 80%);
+}

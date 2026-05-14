@@ -1,6 +1,6 @@
-import {readdirSync, readFileSync} from 'fs';
-import {join} from 'path';
-import {defineConfig} from 'vite';
+import { readdirSync, readFileSync } from 'fs';
+import { join } from 'path';
+import { defineConfig } from 'vite';
 
 const THEME_SCRIPT = `<script>const t=localStorage.theme;document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')</script>`;
 
@@ -11,50 +11,67 @@ const THEME_BUTTON = `<button id="theme-toggle" aria-label="Toggle theme">
 
 const THEME_MODULE = `<script type="module" src="/src/theme.js"></script>`;
 
+const EXAMPLE_DIRS = ['src/less-javascript', 'src/css-new-features'];
+
 function themePlugin() {
-    return {
-        name: 'theme',
-        transformIndexHtml: {
-            order: 'pre',
-            handler(html, ctx) {
-                if (!ctx.filename.includes('src/less-javascript')) return html;
-                return html
-                    .replace('</head>', `  ${THEME_SCRIPT}\n  </head>`)
-                    .replace(/(<body[^>]*>)/, `$1\n    ${THEME_BUTTON}\n`)
-                    .replace('</body>', `    ${THEME_MODULE}\n  </body>`);
-            },
-        },
-    };
+  return {
+    name: 'theme',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html, ctx) {
+        if (!EXAMPLE_DIRS.some((d) => ctx.filename.includes(d))) return html;
+        return html
+          .replace('</head>', `  ${THEME_SCRIPT}\n  </head>`)
+          .replace(/(<body[^>]*>)/, `$1\n    ${THEME_BUTTON}\n`)
+          .replace('</body>', `    ${THEME_MODULE}\n  </body>`);
+      },
+    },
+  };
+}
+
+function readCards(dirRel) {
+  const dir = join(process.cwd(), dirRel);
+  let entries;
+  try {
+    entries = readdirSync(dir, { withFileTypes: true });
+  } catch {
+    return '';
+  }
+  return entries
+    .filter((e) => e.isDirectory())
+    .map((e) => {
+      const file = join(dir, e.name, `${e.name}.html`);
+      let src = '';
+      try {
+        src = readFileSync(file, 'utf-8');
+      } catch {
+        return '';
+      }
+      const title = src.match(/<title>(.+?)(?:\s*—[^<]*)?\s*<\/title>/i)?.[1] ?? e.name;
+      const desc = src.match(/<meta\s+name="description"\s+content="([^"]+)"/i)?.[1] ?? '';
+      const href = `/${dirRel}/${e.name}/${e.name}.html`;
+      return `
+              <a href="${href}" class="demo-card">
+                <span class="demo-card__title">${title}</span>
+                <span class="demo-card__desc">${desc}</span>
+                <span class="demo-card__arrow">→</span>
+              </a>`;
+    })
+    .join('');
 }
 
 function demosPlugin() {
-    return {
-        name: 'demos',
-        transformIndexHtml(html) {
-            const dir = join(process.cwd(), 'src/less-javascript');
-            const cards = readdirSync(dir, {withFileTypes: true})
-                .filter((e) => e.isDirectory())
-                .map((e) => {
-                    const file = join(dir, e.name, `${e.name}.html`);
-                    const src = readFileSync(file, 'utf-8');
-                    const title = src.match(/<title>(.+?)(?:\s*—[^<]*)?\s*<\/title>/i)?.[1] ?? e.name;
-                    const desc = src.match(/<meta\s+name="description"\s+content="([^"]+)"/i)?.[1] ?? '';
-                    const href = `/src/less-javascript/${e.name}/${e.name}.html`;
-                    return `
-                            <a href="${href}" class="demo-card">
-                              <span class="demo-card__title">${title}</span>
-                              <span class="demo-card__desc">${desc}</span>
-                              <span class="demo-card__arrow">→</span>
-                            </a>
-                    `;
-                })
-                .join('');
-
-            return html.replace(/(<section id="demos">)[\s\S]*?(<\/section>)/, `$1${cards}\n      $2`);
-        },
-    };
+  return {
+    name: 'demos',
+    transformIndexHtml(html) {
+      return html.replace(
+        /<div class="demos-list" data-source="([^"]+)"><\/div>/g,
+        (_, source) => `<div class="demos-list">${readCards(`src/${source}`)}\n            </div>`,
+      );
+    },
+  };
 }
 
 export default defineConfig({
-    plugins: [themePlugin(), demosPlugin()],
+  plugins: [themePlugin(), demosPlugin()],
 });

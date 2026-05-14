@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>corner-shape</title>
+    <meta
+      name="description"
+      content="Scoops, bevels, and squircles — pair corner-shape with border-radius, no SVG clip-path."
+    />
+    <link rel="stylesheet" href="/src/theme.css" />
+    <link rel="stylesheet" href="./corner-shape.css" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <a href="/" class="back">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path
+              d="M10 12L6 8l4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          All examples
+        </a>
+      </nav>
+
+      <h1><code>corner-shape</code></h1>
+      <p class="lede">
+        Pair it with <code>border-radius</code> and the corners stop being arcs. Scoop them inward,
+        bevel them flat, or smooth them into a squircle — without a single clip-path.
+      </p>
+
+      <section class="grid">
+        <figure class="shape round">
+          <div class="box"></div>
+          <figcaption>round <span>(default)</span></figcaption>
+        </figure>
+        <figure class="shape scoop">
+          <div class="box"></div>
+          <figcaption>scoop</figcaption>
+        </figure>
+        <figure class="shape bevel">
+          <div class="box"></div>
+          <figcaption>bevel</figcaption>
+        </figure>
+        <figure class="shape notch">
+          <div class="box"></div>
+          <figcaption>notch</figcaption>
+        </figure>
+        <figure class="shape squircle">
+          <div class="box"></div>
+          <figcaption>squircle</figcaption>
+        </figure>
+        <figure class="shape straight">
+          <div class="box"></div>
+          <figcaption>straight</figcaption>
+        </figure>
+      </section>
+
+      <section class="explainer">
+        <h2>The syntax</h2>
+        <pre><code>.box {
+  border-radius: 24px;
+  corner-shape: scoop;
+}</code></pre>
+        <p class="note">
+          Chrome 139+. In older browsers the corners stay as plain rounded rectangles.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

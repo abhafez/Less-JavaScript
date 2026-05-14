@@ -283,12 +283,33 @@ code {
   padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 28px;
   text-align: left;
 
   @media (max-width: 1024px) {
     padding: 24px 20px;
   }
+}
+
+.demos-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demos-heading {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+
+.demos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .demo-card {

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm add *)",
+      "Bash(npm run *)",
+      "Bash(node_modules/.bin/oxfmt *)",
+      "Bash(node *)"
+    ]
+  }
+}

@@ -1,0 +1,99 @@
+main {
+  max-width: 720px;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--text-h);
+  letter-spacing: -1px;
+  margin: 0 0 12px;
+}
+
+h1 code {
+  font-size: 0.85em;
+  padding: 2px 8px;
+}
+
+.lede {
+  margin: 0 0 32px;
+  max-width: 60ch;
+}
+
+.demo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--code-bg);
+}
+
+form h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: var(--text-h);
+}
+
+form input {
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+form button {
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 14px;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@scope (.login-form) {
+  input {
+    border: 1px solid var(--accent-border);
+    border-radius: 8px;
+    background: var(--accent-bg);
+  }
+  input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+}
+
+.explainer h2 {
+  font-size: 22px;
+  color: var(--text-h);
+  margin: 32px 0 12px;
+}
+
+.explainer pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  overflow-x: auto;
+  margin: 0 0 16px;
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.note {
+  font-size: 14px;
+  color: var(--text);
+}

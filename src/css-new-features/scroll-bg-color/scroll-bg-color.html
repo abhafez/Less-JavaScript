@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scroll-driven background color</title>
+    <meta
+      name="description"
+      content="Shift the page background through a full hue arc as you scroll — no JS, no scroll listeners, just @property and animation-timeline."
+    />
+    <link rel="stylesheet" href="/src/theme.css" />
+    <link rel="stylesheet" href="./scroll-bg-color.css" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <a href="/" class="back">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path
+              d="M10 12L6 8l4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          All examples
+        </a>
+      </nav>
+
+      <h1>Scroll-driven background color</h1>
+      <p class="lede">
+        Shift the page background through a full hue arc as you scroll — no JS, no scroll listeners,
+        no <code>requestAnimationFrame</code>. Just <code>@property</code> and
+        <code>animation-timeline</code>.
+      </p>
+
+      <p class="hint">↓ Scroll down to see the color shift</p>
+
+      <section class="stops">
+        <div class="stop" style="--stop-hue: 220">
+          <div class="swatch"></div>
+          <span class="stop-label">hue 220 — top of page</span>
+        </div>
+        <div class="stop" style="--stop-hue: 260">
+          <div class="swatch"></div>
+          <span class="stop-label">hue 260 — 25%</span>
+        </div>
+        <div class="stop" style="--stop-hue: 300">
+          <div class="swatch"></div>
+          <span class="stop-label">hue 300 — 50%</span>
+        </div>
+        <div class="stop" style="--stop-hue: 330">
+          <div class="swatch"></div>
+          <span class="stop-label">hue 330 — 75%</span>
+        </div>
+        <div class="stop" style="--stop-hue: 350">
+          <div class="swatch"></div>
+          <span class="stop-label">hue 350 — bottom</span>
+        </div>
+      </section>
+
+      <section class="explainer">
+        <h2>Step 1 — register the variable</h2>
+        <p>
+          Plain CSS custom properties can't be interpolated — the browser doesn't know if
+          <code>--bg-hue</code> is a number, a color, or a string. Declare its type with
+          <code>@property</code> so the browser can smoothly tween between values.
+        </p>
+        <pre><code>@property --bg-hue {
+  syntax: "&lt;number&gt;";
+  inherits: true;
+  initial-value: 220;
+}</code></pre>
+
+        <h2>Step 2 — define the keyframes</h2>
+        <p>
+          A normal <code>@keyframes</code> block — but instead of moving something, we just change
+          the hue number.
+        </p>
+        <pre><code>@keyframes shift-bg {
+  0%   { --bg-hue: 220; }
+  100% { --bg-hue: 350; }
+}</code></pre>
+
+        <h2>Step 3 — bind to scroll</h2>
+        <p>
+          Apply the animation to <code>body</code>, then replace the time-based clock with
+          <code>animation-timeline: scroll()</code>. Progress is now tied to scroll position —
+          not seconds.
+        </p>
+        <pre><code>body {
+  background: hsl(var(--bg-hue) 45% 13%);
+  animation: shift-bg linear;
+  animation-timeline: scroll();
+}</code></pre>
+
+        <p class="note">
+          Requires Chrome 115+, Firefox 110+, Safari 18+. In older browsers the background stays
+          at its initial color.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

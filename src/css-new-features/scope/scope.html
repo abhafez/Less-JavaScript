@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@scope</title>
+    <meta
+      name="description"
+      content="Component-local styles without BEM. @scope draws a boundary around a selector tree."
+    />
+    <link rel="stylesheet" href="/src/theme.css" />
+    <link rel="stylesheet" href="./scope.css" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <a href="/" class="back">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path
+              d="M10 12L6 8l4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          All examples
+        </a>
+      </nav>
+
+      <h1><code>@scope</code></h1>
+      <p class="lede">
+        Two forms with the same markup. Only the one inside <code>.login-form</code> picks up the
+        scoped styles — no BEM, no global leakage.
+      </p>
+
+      <section class="demo">
+        <form class="login-form">
+          <h3>Login (scoped)</h3>
+          <input type="email" placeholder="you@example.com" />
+          <input type="password" placeholder="password" />
+          <button type="button">Sign in</button>
+        </form>
+
+        <form class="other-form">
+          <h3>Newsletter (unscoped)</h3>
+          <input type="email" placeholder="you@example.com" />
+          <button type="button">Subscribe</button>
+        </form>
+      </section>
+
+      <section class="explainer">
+        <h2>The syntax</h2>
+        <pre><code>@scope (.login-form) {
+  input {
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+  }
+  input:focus {
+    outline: 2px solid var(--accent);
+  }
+}</code></pre>
+        <p class="note">
+          Selectors only match descendants of <code>.login-form</code>. The newsletter input next to
+          it stays untouched.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
